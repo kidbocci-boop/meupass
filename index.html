@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#24213A">
+  <meta name="description" content="MEUPASS — descobre eventos e garante o teu lugar em Angola.">
+  <title>Meupass — Onde quiser me levar, eu vou.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="brand" aria-label="MEUPASS página inicial">
+  <svg class="brand-icon" viewBox="0 0 64 64" aria-hidden="true">
+    <path d="M12 13H43L28 30L43 47H12" fill="none" stroke="#9C6ADE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M27 5L51 30L27 55" fill="none" stroke="#F5F1FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span>Meupass<span class="brand-dot">.ao</span></span>
+</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+    <nav class="nav" id="mainNav">
+      <a href="#eventos">Eventos</a>
+      <a href="#categorias">Categorias</a>
+      <a href="#sobre">Sobre nós</a>
+      <!-- Link móvel para a conta -->
+      <a href="#" id="mobileAccountLink" class="mobile-only-account" style="display: none;">A minha conta</a>
+    </nav>
+    
+    <div class="header-actions-right">
+      <button class="auth-trigger-btn" id="openAuthModalBtn">Entrar / Registar</button>
+      <a href="#eventos" class="header-button">Explorar eventos ↗️</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="sobre">
+      <div class="hero-content">
+        <span class="eyebrow">
+          <span class="live-dot"></span>
+          O TEU PRÓXIMO MOMENTO COMEÇA AQUI
+        </span>
+
+        <h1>Há momentos<br>que merecem <span>ser vividos.</span></h1>
+
+        <p>
+          Descobre eventos, encontra novas experiências
+          e garante o teu lugar. A próxima história pode
+          começar hoje.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#eventos" class="button button-primary">
+            Descobrir eventos <span>↗️</span>
+          </a>
+          <a href="#categorias" class="button button-outline">
+            Explorar categorias
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <span class="note-line"></span>
+          <span>Angola é o começo. O mundo é o destino.</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="art-glow"></div>
+
+        <div class="ticket">
+          <div class="ticket-top">
+            <span class="ticket-brand">Meupass.</span>
+            <span class="ticket-tag">ACESSO</span>
+          </div>
+          <div class="ticket-symbol">M.</div>
+          <div class="ticket-bottom">
+            <div>
+              <small>O TEU PRÓXIMO DESTINO</small>
+              <strong>Começa aqui.</strong>
+            </div>
+            <div class="ticket-code">✳</div>
+          </div>
+        </div>
+
+        <span class="floating-star star-one">✳</span>
+        <span class="floating-star star-two">✦</span>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <div class="search-box">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Que evento procuras?" aria-label="Pesquisar eventos">
+
+        <select id="cityFilter" aria-label="Filtrar por cidade">
+          <option value="">Todas as cidades</option>
+          <option value="Luanda">Luanda</option>
+          <option value="Benguela">Benguela</option>
+          <option value="Lubango">Lubango</option>
+        </select>
+
+        <button id="searchButton" class="button button-primary">
+          Pesquisar
+        </button>
+      </div>
+    </section>
+
+    <section class="categories section" id="categorias">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">ENCONTRA A TUA VIBE</span>
+          <h2>Explora por categoria</h2>
+        </div>
+        <p>Há sempre algo à tua espera.</p>
+      </div>
+
+      <div class="category-list">
+        <button class="category active" data-category="Todos">✳ Todos</button>
+        <button class="category" data-category="Música">♫ Música</button>
+        <button class="category" data-category="Festas">✦ Festas</button>
+        <button class="category" data-category="Negócios">↗️ Negócios</button>
+        <button class="category" data-category="Cultura">◈ Cultura</button>
+        <button class="category" data-category="Desporto">◎ Desporto</button>
+      </div>
+    </section>
+
+    <section class="events section" id="eventos">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">ESCOLHAS Meupass.</span>
+          <h2>Eventos em destaque<span class="heading-dot">.</span></h2>
+        </div>
+        <span class="event-count" id="eventCount">3 eventos</span>
+      </div>
+
+      <div class="event-grid" id="eventGrid">
+        <article class="event-card" data-event-id="musica" data-name="Noite de Música ao Vivo" data-category="Música" data-city="Luanda" data-city="Luanda">
+          <div class="event-image music-art">
+            <span class="event-label">MÚSICA</span>
+            <span class="art-number">01</span>
+            <div class="image-decoration">♫</div>
+          </div>
+          <div class="event-info">
+            <span class="event-date">DATA A CONFIRMAR</span>
+            <h3>Noite de Música ao Vivo</h3>
+            <p class="event-location">⌖ Luanda, Angola</p>
+            <div class="event-footer">
+              <div class="price">
+                <small>A partir de</small>
+                <strong>5.000 Kz</strong>
+              </div>
+              <button class="buy-button" data-buy>Ver ingressos ↗️</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card" data-event-id="sunset" data-name="Experiência Sunset" data-category="Festas" data-city="Benguela">
+          <div class="event-image sunset-art">
+            <span class="event-label">FESTAS</span>
+            <span class="art-number">02</span>
+            <div class="image-decoration">◉</div>
+          </div>
+          <div class="event-info">
+            <span class="event-date">DATA A CONFIRMAR</span>
+            <h3>Experiência Sunset</h3>
+            <p class="event-location">⌖ Benguela, Angola</p>
+            <div class="event-footer">
+              <div class="price">
+                <small>A partir de</small>
+                <strong>7.500 Kz</strong>
+              </div>
+              <button class="buy-button" data-buy>Ver ingressos ↗️</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card" data-event-id="forum" data-name="Fórum de Inovação" data-category="Negócios" data-city="Luanda">
+          <div class="event-image business-art">
+            <span class="event-label">NEGÓCIOS</span>
+            <span class="art-number">03</span>
+            <div class="image-decoration">⌘</div>
+          </div>
+          <div class="event-info">
+            <span class="event-date">DATA A CONFIRMAR</span>
+            <h3>Fórum de Inovação</h3>
+            <p class="event-location">⌖ Luanda, Angola</p>
+            <div class="event-footer">
+              <div class="price">
+                <small>A partir de</small>
+                <strong>10.000 Kz</strong>
+              </div>
+              <button class="buy-button" data-buy>Ver ingressos ↗️</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p id="emptyMessage" class="empty-message" hidden>
+        Não encontrámos eventos com esses critérios. Tenta outra pesquisa.
+      </p>
+
+      <p class="demo-note">
+        Os eventos, preços e datas apresentados são atualizados em tempo real.
+      </p>
+    </section>
+
+    <section class="closing section">
+      <div>
+        <span class="eyebrow">A TUA PRÓXIMA EXPERIÊNCIA</span>
+        <h2>Onde quiser me levar,<br><span>eu vou.</span></h2>
+      </div>
+      <a href="#eventos" class="button button-light">
+        Encontrar o meu evento ↗️
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#" class="brand footer-brand">
+      <span>Meupass.<span class="brand-dot">.</span></span>
+    </a>
+    <p>Onde quiser me levar, eu vou.</p>
+    <span class="copyright">©️ 2026 Meupass. Todos os direitos reservados.</span>
+  </footer>
+
+  <!-- Modal: Seleção e Compra de Ingressos -->
+  <div class="modal-overlay" id="ticketModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Fechar janela">×</button>
+
+      <div class="modal-banner" id="modalBanner">
+        <span class="modal-category" id="modalCategory">EVENTO</span>
+        <span class="modal-banner-symbol" id="modalSymbol">✳</span>
+        <span class="modal-banner-number" id="modalNumber">Meupass. EXPERIENCE</span>
+      </div>
+
+      <div class="modal-content">
+        <span class="eyebrow">GARANTE O TEU LUGAR</span>
+        <h2 id="modalTitle">Nome do evento</h2>
+
+        <div class="modal-meta">
+          <p>⌖ <span id="modalCity">Luanda, Angola</span></p>
+          <p>◷ <span id="modalDate">Data a confirmar</span></p>
+        </div>
+
+        <p class="modal-description" id="modalDescription"></p>
+
+        <div class="modal-divider"></div>
+
+        <h3 class="subheading">Escolhe o teu ingresso</h3>
+        <p class="form-hint">Seleciona o tipo de ingresso e a quantidade pretendida.</p>
+
+        <div class="ticket-options" id="ticketOptions"></div>
+
+        <div class="quantity-row">
+          <div>
+            <strong>Quantidade</strong>
+            <small>Máximo de 10 por seleção</small>
+          </div>
+
+          <div class="quantity-control">
+            <button id="decreaseQty" aria-label="Diminuir quantidade">−</button>
+            <output id="quantityValue" aria-live="polite">1</output>
+            <button id="increaseQty" aria-label="Aumentar quantidade">+</button>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <div>
+            <span id="summaryTicket">Ingresso Normal</span>
+            <small id="summaryQuantity">1 ingresso</small>
+          </div>
+          <strong id="summaryTotal">5.000 Kz</strong>
+        </div>
+
+        <button class="button button-primary checkout-button" id="checkoutButton">
+          Prosseguir para Checkout <span>↗️</span>
+        </button>
+
+        <p class="secure-note">Transação segura protegida por criptografia.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal: Checkout Seguro -->
+  <div class="modal-overlay" id="checkoutModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="closeCheckoutModal" aria-label="Fechar checkout">×</button>
+      <div class="modal-content">
+        <span class="eyebrow">PAGAMENTO SEGURO</span>
+        <h2>Finalizar Compra</h2>
+        <p class="form-hint">Insere os teus dados para emitir os bilhetes digitais em teu nome.</p>
+
+        <form id="checkoutForm" class="auth-form">
+          <div class="input-group">
+            <label for="buyerName">Nome Completo</label>
+            <input type="text" id="buyerName" required placeholder="Ex: Ana Paula">
+          </div>
+          <div class="input-group">
+            <label for="buyerPhone">Telemóvel (Angola)</label>
+            <input type="tel" id="buyerPhone" required placeholder="+244 923 ...">
+          </div>
+          <div class="input-group">
+            <label for="paymentMethod">Método de Pagamento</label>
+            <select id="paymentMethod" class="checkout-select">
+              <option value="multicaixa">Referência Multicaixa / Express</option>
+              <option value="transferencia">Transferência Bancária</option>
+              <option value="unitelmoney">Unitel Money</option>
+            </select>
+          </div>
+
+          <div class="order-summary checkout-final-box">
+            <div>
+              <span id="checkoutSummaryTitle">Resumo do Pedido</span>
+              <small id="checkoutSummaryDetails">1x Ingressos</small>
+            </div>
+            <strong id="checkoutSummaryTotal">0 Kz</strong>
+          </div>
+
+          <button type="submit" class="button button-primary checkout-button">
+            Confirmar Pagamento 🔒
+          </button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal: Autenticação & Conta -->
+  <div class="modal-overlay" id="authModal" hidden>
+    <section class="modal auth-modal-box" role="dialog" aria-modal="true">
+      <button class="modal-close" id="closeAuthModal" aria-label="Fechar">×</button>
+      <div class="modal-content">
+        <div class="auth-tabs" id="authTabsHeader">
+          <button class="auth-tab active" id="tabLoginBtn">Entrar</button>
+          <button class="auth-tab" id="tabRegisterBtn">Criar Conta</button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <h2 class="auth-title">Bem-vindo de volta</h2>
+          <p class="form-hint">Acede à tua conta Meupass.</p>
+          <div class="input-group">
+            <label for="loginEmail">E-mail</label>
+            <input type="email" id="loginEmail" required placeholder="teu@email.com">
+          </div>
+          <div class="input-group">
+            <label for="loginPassword">Palavra-passe</label>
+            <input type="password" id="loginPassword" required placeholder="••••••••">
+          </div>
+          <button type="submit" class="button button-primary checkout-button">Entrar na conta</button>
+        </form>
+
+        <form id="registerForm" class="auth-form" hidden>
+          <h2 class="auth-title">Junta-te ao Meupass.</h2>
+          <p class="form-hint">Cria uma conta para gerir os teus bilhetes.</p>
+          <div class="input-group">
+            <label for="regName">Nome Completo</label>
+            <input type="text" id="regName" required placeholder="O teu nome">
+          </div>
+          <div class="input-group">
+            <label for="regEmail">E-mail</label>
+            <input type="email" id="regEmail" required placeholder="teu@email.com">
+          </div>
+          <div class="input-group">
+            <label for="regPassword">Palavra-passe</label>
+            <input type="password" id="regPassword" required minlength="6" placeholder="••••••••">
+          </div>
+          <button type="submit" class="button button-primary checkout-button">Criar Conta Gratuita</button>
+        </form>
+
+        <div id="userAccountInfo" class="user-account-panel" hidden>
+          <div class="account-header-row">
+            <div>
+              <h2 class="auth-title" id="accName">Nome</h2>
+              <p class="form-hint" id="accEmail">email</p>
+            </div>
+            <button id="logoutBtn" class="button button-outline logout-small-btn">Terminar Sessão</button>
+          </div>
+
+          <div class="modal-divider"></div>
+
+          <h3 class="subheading">🎫 Os meus bilhetes</h3>
+          <p class="form-hint">Estes são os teus bilhetes válidos para apresentação na entrada dos eventos.</p>
+          <div class="my-tickets-container" id="myTicketsContainer"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
